@@ -1,0 +1,1384 @@
+/* =========================================
+   VARIABLES BASE Y CONFIGURACIÓN
+   ========================================= */
+:root {
+    --bg-color: #030303; /* Negro profundo para un estilo sobrio */
+    --bg-light: #0d0d0d; /* Gris muy oscuro para crear contraste entre secciones */
+    --text-color: #f5f5f5; /* Blanco humo, menos agresivo a la vista que el blanco puro */
+    --accent-color: #333333; /* Color para líneas y bordes delimitadores */
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --transition-speed: 0.4s;
+}
+
+/* =========================================
+   RESET Y TIPOGRAFÍA
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Ocultar barra de scroll en todos los navegadores */
+html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge */
+}
+
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari y Opera */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para un look más premium */
+    overflow-x: hidden; /* Evita el scroll horizontal indeseado */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge */
+}
+
+h1, h2, h3, h4 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+p {
+    color: #cccccc;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* =========================================
+   UTILIDADES Y ELEMENTOS GRÁFICOS
+   ========================================= */
+.text-center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.subtitle { font-size: 1.3rem; margin-top: 10px; color: #999999; }
+
+.line-separator {
+    height: 1px;
+    width: 100%;
+    background-color: var(--accent-color);
+    margin: 30px 0;
+}
+
+.line-separator-short {
+    height: 2px;
+    width: 60px;
+    background-color: var(--text-color);
+    margin: 25px 0;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 15px 40px;
+    margin-top: 30px;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.btn-outline:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* =========================================
+   NAVEGACIÓN PRINCIPAL
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(3, 3, 3, 0.85);
+    backdrop-filter: blur(12px); /* Efecto cristal para que la navbar se integre con el fondo */
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.logo {
+    font-weight: 600;
+    letter-spacing: 4px;
+    font-size: 1.2rem;
+}
+
+/* Estilos para el Logo en Navbar */
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nav-logo-img {
+    height: 40px; /* Tamaño ideal para escritorio */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo-img:hover {
+    transform: scale(1.05); /* Efecto sutil al pasar el ratón */
+}
+
+/* Ajuste específico para móvil */
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: #888888;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: color var(--transition-speed);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-color);
+}
+
+/* =========================================
+   CABECERAS (HERO Y TÍTULOS DE PÁGINA)
+   ========================================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin-bottom: 10px;
+}
+
+.page-header {
+    padding-top: 180px;
+    padding-bottom: 80px;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+}
+
+/* 1. Configuración de la imagen para el Hero del Index */
+.hero-index-image {
+    background: linear-gradient(rgba(0, 0, 0, 0.736), rgba(0, 0, 0, 0.6)), 
+                url('img/amm-hero.png'); /* Asegúrate de que la ruta sea correcta */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Mantiene el efecto de profundidad al hacer scroll */
+    position: relative;
+}
+
+/* 2. Ajuste de texto para móviles (Next Level Mobile) */
+
+/* =========================================
+   ESTRUCTURA DE SECCIONES Y GRIDS
+   ========================================= */
+.section {
+    padding-bottom: 120px;
+    padding-top: 120px;
+}
+
+.section-logros {
+    padding-bottom: 70px;
+}
+
+.bg-dark {
+    background-color: var(--bg-light);
+    border-top: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* Utilidad para alternar imagen/texto a la izquierda/derecha */
+.layout-grid.invert .text-block {
+    order: 2;
+}
+.layout-grid.invert .image-block {
+    order: 1;
+}
+
+.text-block h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.image-block img {
+    width: 100%;
+    height: auto;
+    transition: filter 0.6s ease;
+    border: 1px solid var(--accent-color);
+}
+
+.image-block img:hover {
+    filter: grayscale(0%);
+}
+
+/* Modificamos tu contenedor existente */
+.image-block {
+    width: 100%;
+    height: 55vh; /* AJUSTA ESTO: 60vh = 60% de la altura de la pantalla. Hazlo más pequeño si quieres más recorte. */
+    overflow: hidden; /* IMPORTANTE: Corta lo que se sale del contenedor */
+    position: relative;
+    border-radius: 8px; /* O el radio que ya tuvieras */
+}
+
+/* Estilos para el vídeo dentro del contenedor */
+.video-fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Clave: Estira el vídeo para llenar el contenedor sin deformarlo */
+    object-position: center center; /* Clave: Asegura que el recorte sea igual por arriba y por abajo */
+    display: block;
+}
+
+
+
+/* =========================================
+   GALERÍA AUTOMÁTICA INFINITA
+   ========================================= */
+.gallery-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    /* Degradado en los bordes para suavizar la entrada/salida */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.gallery-track {
+    display: flex;
+    width: max-content; /* Obliga a las fotos a estar en una sola línea */
+    gap: 20px;
+    animation: infiniteScroll 30s linear infinite;
+}
+
+.gallery-track img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 4px; /* Un toque sutil de diseño */
+    filter: grayscale(100%);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.gallery-track img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Pausar al pasar el ratón */
+.gallery-wrapper:hover .gallery-track {
+    animation-play-state: paused;
+}
+
+/* ANIMACIÓN: El secreto del bucle perfecto */
+@keyframes infiniteScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Se desplaza exactamente la mitad del ancho total del track */
+        transform: translateX(calc(-50% - 10px)); 
+    }
+}
+
+/* Adaptación para móvil */
+
+/* =========================================
+   SECCIÓN MANIFIESTO Y BENTO GRID
+   ========================================= */
+.manifesto-header {
+    max-width: 850px;
+    margin: 0 auto 60px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border: 1px solid var(--accent-color);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888888;
+    margin-bottom: 25px;
+    border-radius: 50px;
+}
+
+.lead-text {
+    font-size: 1.25rem;
+    color: #aaaaaa;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+/* Diseño de la Cuadrícula */
+.pillars-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+/* Tarjetas Individuales */
+.bento-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--accent-color);
+    padding: 50px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 260px;
+    text-align: left; /* Alineamos a la izquierda para contraste con el centro de la cabecera */
+}
+
+.bento-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--text-color);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Número de Fondo (Marca de agua) */
+.card-number {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.03); /* Casi invisible */
+    line-height: 1;
+    transition: color 0.4s ease;
+    user-select: none;
+}
+
+.bento-card:hover .card-number {
+    color: rgba(255, 255, 255, 0.1); /* Se ilumina ligeramente al pasar el ratón */
+}
+
+/* Contenido de la Tarjeta */
+.card-content {
+    position: relative;
+    z-index: 2; /* Para que el texto quede por encima del número */
+}
+
+.card-content h4 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.card-content p {
+    font-size: 1.1rem;
+    color: #888888;
+}
+
+/* =========================================
+   BOTÓN FLOTANTE DE WHATSAPP (ESTILO AMM)
+   ========================================= */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #ffffff; /* Blanco puro */
+    color: #000000; /* Texto negro */
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre icono y texto */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2000; /* Aseguramos que esté por encima de todo */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra dramática para fondo oscuro */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Rebote sutil */
+}
+
+.whatsapp-icon {
+    width: 20px;
+    height: auto;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px) scale(1.02);
+    background-color: #cccccc; /* Gris claro al hover */
+}
+
+/* Ajustes específicos para móviles */
+
+/* =========================================
+   SECCIÓN CIFRAS (BIG DATA)
+   ========================================= */
+.huge-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.huge-stat-item {
+    padding: 15px 0;
+}
+
+.huge-number {
+    display: block;
+    font-size: 5.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    letter-spacing: -2px;
+}
+
+.huge-label {
+    font-size: 1rem;
+    color: #888888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   SECCIÓN FUNDADOR (EDITORIAL LAYOUT)
+   ========================================= */
+.founder-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--accent-color);
+    transition: border-color 0.4s ease;
+}
+
+.founder-wrapper:hover {
+    border-color: #555555;
+}
+
+.founder-image {
+    flex: 1;
+    max-width: 45%;
+}
+
+.founder-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.6s ease;
+}
+
+.founder-image img:hover {
+    filter: grayscale(0%);
+}
+
+.founder-content {
+    flex: 1;
+    padding: 60px 80px 60px 60px;
+}
+
+.highlight-quote {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    font-style: italic;
+    margin-bottom: 25px;
+    border-left: 3px solid var(--text-color);
+    padding-left: 20px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   SECCIÓN CTA (CIERRE CINEMATOGRÁFICO)
+   ========================================= */
+.cta-section {
+    padding: 150px 20px;
+    background: linear-gradient(to top, rgba(10, 10, 10, 1), rgba(0, 0, 0, 0));
+}
+
+.massive-text {
+    font-size: 4.5vw; /* Se adapta al ancho de la pantalla */
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.btn-solid {
+    display: inline-block;
+    padding: 20px 50px;
+    background-color: var(--text-color);
+    color: #000000;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-solid:hover {
+    background-color: #aaaaaa;
+    transform: scale(1.05); /* Efecto de crecimiento al hacer hover */
+}
+/* =========================================
+   MÓDULOS (ESTADÍSTICAS, LISTAS, CONTACTO)
+   ========================================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding-top: 40px;
+}
+
+
+/* Ajuste específico para la sección de 3 salas en la página de Logros */
+.bg-dark .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.stat-item {
+    padding: 40px 30px;
+    border: 1px solid var(--accent-color);
+    text-align: center;
+    transition: border-color var(--transition-speed), transform var(--transition-speed);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* =========================================
+   LÍNEA DIVISORIA DE SECCIÓN
+   ========================================= */
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1); /* Blanco muy sutil/transparente */
+    margin: 0 auto;
+}
+.stat-item:hover {
+    border-color: var(--text-color);
+    transform: translateY(-8px);
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.stat-item h4 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.tour-list {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.tour-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--accent-color);
+    color: #cccccc;
+    font-size: 1.1rem;
+}
+
+.contact-card {
+    margin-top: 50px;
+    padding: 60px;
+    border: 1px solid var(--accent-color);
+    display: inline-block;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.contact-card p {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.contact-card strong {
+    color: var(--text-color);
+    margin-right: 15px;
+}
+
+/* =========================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================= */
+.footer {
+    padding: 60px 0 40px;
+    text-align: center;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+
+/* =========================================
+   FOOTER PROFESIONAL Y LEGAL
+   ========================================= */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr 1.5fr 1fr;
+    gap: 40px;
+    text-align: left;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.footer-col h4 {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.footer-tagline {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: #888888;
+    max-width: 300px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: #aaaaaa;
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+.footer-links a:hover {
+    color: var(--text-color);
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-links a {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color var(--transition-speed);
+}
+
+.social-links a:hover {
+    color: var(--text-color);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.legal-links {
+    display: flex;
+    gap: 25px;
+}
+
+.legal-links a {
+    color: #666666;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color var(--transition-speed);
+}
+
+.legal-links a:hover {
+    color: #aaaaaa;
+}
+
+/* =========================================
+   FIRMA DE ALUJA STUDIO (SIN ROMPER LAYOUT)
+   ========================================= */
+.copyright-wrapper p {
+    margin: 0; /* Evita que los márgenes por defecto empujen el diseño */
+}
+
+.agency-credit {
+    font-size: 0.85rem;
+    color: #888888;
+}
+
+.agency-credit a {
+    color: #7f7f7f;
+    font-family:Arial, Helvetica, sans-serif;
+    transition: color var(--transition-speed);
+    text-decoration: none;
+}
+
+.agency-credit a:hover {
+    color: #cccccc;
+}
+/* =========================================
+   ESTILOS PREMIUM DE CONTACTO
+   ========================================= */
+.contact-info-blocks {
+    margin-top: 50px;
+    display: grid;
+    gap: 30px;
+}
+
+.info-block h4 {
+    font-size: 0.9rem;
+    color: #888888;
+    margin-bottom: 5px;
+}
+
+.info-block p, .info-block a {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+.info-block a:hover {
+    color: #666666;
+}
+
+/* =========================================
+   FORMULARIO MINIMALISTA (ACABADO FINAL)
+   ========================================= */
+.form-container {
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil, menos agresivo */
+    border-radius: 4px; /* Ligera curvatura premium */
+    height: auto; /* Asegura que se adapte al contenido completo */
+    box-sizing: border-box; /* Crucial: asegura que el padding no sume ancho extra */
+    width: 100%;
+    max-width: 100vw; /* No puede ser más ancho que la pantalla */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Un poco menos de espacio para compactar visualmente */
+}
+
+.form-group {
+    position: relative;
+    width: 100%;
+}
+
+.form-control {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Línea base grisácea */
+    color: var(--text-color);
+    padding: 10px 0;
+    font-size: 1rem;
+    transition: border-bottom-color 0.4s ease;
+    resize: none;
+}
+
+/* Efecto de foco profesional */
+.form-control:focus {
+    outline: none;
+    border-bottom-color: #ffffff; /* Se ilumina en blanco al escribir */
+}
+
+.form-control::placeholder {
+    color: #666666;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+}
+
+/* El botón ahora sí es el protagonista de la acción */
+.btn-submit {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border: 1px solid var(--text-color);
+    padding: 18px 40px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    align-self: flex-start;
+    margin-top: 15px;
+}
+
+.btn-submit:hover {
+    background-color: transparent; /* Efecto inverso elegante */
+    color: var(--text-color);
+}
+
+/* Ajuste específico para móvil (Nivel Agencia) */
+
+/* =========================================
+   ESTILOS PARA PÁGINAS LEGALES
+   ========================================= */
+.legal-content p { margin-bottom: 20px; font-size: 1rem; text-align: justify; }
+.legal-content h3 { font-size: 1.5rem; margin: 40px 0 15px; color: var(--text-color); }
+/* =========================================
+   ANIMACIONES JS (INTERSECTION OBSERVER)
+   ========================================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in.visible,
+.slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE DESIGN)
+   ========================================= */
+
+
+/* Adaptación para Tablets y Pantallas Medias */
+@media (max-width: 992px) {
+    .hero h1 { font-size: 2.2rem; letter-spacing: 4px; }
+    .layout-grid { gap: 40px; }
+    .stats-grid, .bg-dark .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    
+    .pillars-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    } /* <--- ¡ESTA ES LA LLAVE QUE FALTABA Y ROMPÍA TODO EL MÓVIL! */
+
+    .founder-wrapper {
+        flex-direction: column;
+    }
+
+    .founder-image {
+        max-width: 100%;
+    }
+
+    .founder-content {
+        padding: 50px 30px;
+    }
+
+    .massive-text {
+        font-size: 3.5rem; 
+    }
+}
+/* =========================================
+   ESTILO BASE DEL MENÚ HAMBURGUESA
+   ========================================= */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1001; /* Siempre por encima del menú desplegable */
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE PARA TODA LA WEB)
+   ========================================= */
+
+/* Adaptación para Tablets y Pantallas Medias */
+
+
+
+
+/* Adaptación para Teléfonos muy pequeños */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 { font-size: 2.2rem; letter-spacing: 2px; }
+}
+
+
+
+@media (max-width: 768px) {
+
+
+    .contact-title {
+        font-size: 2.8rem !important; /* Bajamos de 4.5rem a 2.8rem para que quepa */
+        text-align: center;
+        word-wrap: break-word;
+    }
+
+    /* 3. Ajustamos el contenedor de la sección de contacto */
+    .section {
+        padding-top: 100px !important; /* Reducimos el espacio superior en móvil */
+        padding-bottom: 50px;
+    }
+    
+    .nav-logo-img {
+        height: 32px; /* Un poco más pequeño en móvil para dejar espacio al menú */
+    }
+
+    
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 1.4rem !important; /* Texto más pequeño y elegante en móvil */
+        line-height: 1.2;
+        padding: 0 10px;
+    }
+    /* Clase de utilidad para ocultar elementos solo en teléfonos */
+    .hide-on-mobile {
+        display: none !important;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1rem;
+        margin-top: 15px;
+        padding: 0 20px;
+    }
+
+    .hero-index-image {
+background-attachment: scroll !important;
+        height: auto !important; /* Dejamos que el contenido decida la altura */
+        min-height: 75vh; /* Aseguramos que siga ocupando buena parte de la pantalla */
+        padding-top: 140px !important; /* Extra de aire por arriba para separarlo del menú */
+        padding-bottom: 80px !important; /* Aire por abajo para que respire antes de la siguiente sección */}
+
+@media (max-width: 768px) {
+    .gallery-track img {
+        width: 200px;
+        height: 280px;
+        filter: grayscale(0%); /* En móvil siempre color para impacto */
+    }
+    @keyframes infiniteScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-50% - 10px)); }
+    }
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        padding: 15px; /* Más cómodo para el dedo */
+        bottom: 25px;
+        right: 25px;
+    }
+    
+    .whatsapp-float span {
+        display: none; /* Ocultamos el texto "Contactar" en móvil */
+    }
+    
+    .whatsapp-icon {
+        width: 24px; /* Icono un poco más grande para suplir el texto */
+    }
+}
+
+@media (max-width: 768px) {
+/* 6. Forzamos que el formulario no sea más ancho que la pantalla */
+    .form-container {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 30px 20px;
+        border-radius: 0; /* En móvil queda más limpio sin bordes redondeados */
+    }
+
+    /* Controlamos el título que tenías forzado en el HTML */
+    .form-container h3 {
+        font-size: 1.5rem !important; 
+        margin-bottom: 25px !important;
+        text-align: center; /* Centrado en móvil queda mucho más imponente */
+    }
+    
+    .form-control {
+        font-size: 16px; /* Evita el molesto auto-zoom en iPhone al escribir */
+        padding: 15px 0; /* Área táctil más grande para el dedo */
+    }
+
+    .contact-form {
+        gap: 25px; /* Reducimos ligerísimamente la separación entre campos */
+    }
+
+    .btn-submit {
+        width: 100%; 
+        text-align: center;
+        padding: 20px; /* Botón un poco más alto para mejor usabilidad táctil */
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Navegación Móvil */
+    .navbar {
+        flex-direction:row;
+        padding: 15px 20px;
+        gap: 15px;
+        background: rgba(3, 3, 3, 0.95); /* Fondo más opaco para asegurar lectura */
+    }
+
+    .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Tipografía y Espaciados Generales */
+
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .page-header {
+        padding-top: 150px;
+        padding-bottom: 50px;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Hero Section Móvil */
+    .hero h1 {
+        font-size: 3rem;
+        letter-spacing: 3px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .btn-outline {
+        padding: 12px 30px;
+        font-size: 0.8rem;
+    }
+
+/* 4. Aseguramos que el layout no tenga márgenes negativos */
+    .layout-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
+        padding: 0; /* Evita que el padding sume al ancho total */
+        box-sizing: border-box;
+    }
+
+    .text-block h2 {
+        font-size: 2rem;
+    }
+
+    /* 5. Los bloques de texto informativos centrados */
+    .text-block {
+        width: 100%;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    /* Centrar las líneas cortas en móvil al centrar el texto */
+    .layout-grid .line-separator-short {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Respetar el orden natural en móvil (foto arriba o abajo según fluya mejor) */
+    .layout-grid.invert .text-block {
+        order: 0; 
+    }
+    
+    .layout-grid.invert .image-block {
+        order: 0;
+    }
+/* Estadísticas en Móvil (Bloqueado contra scroll horizontal) */
+    .stats-grid,
+    .bg-dark .stats-grid {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+        width: 100%;
+        max-width: 100%; /* Seguro 1: Prohíbe que el grid sea más ancho que la pantalla */
+        margin: 0; /* Seguro 2: Mata cualquier margen lateral oculto */
+        box-sizing: border-box;
+    }
+
+    .stat-item {
+        padding: 25px 15px; /* Un poco más de aire vertical, menos aire horizontal */
+        width: 100%;
+        max-width: 100%; /* Seguro 3: Prohíbe que la tarjeta se salga del grid */
+        box-sizing: border-box; /* El padding se empuja hacia dentro, no hacia fuera */
+        word-wrap: break-word; /* Seguro 4: Si un número es gigante, lo parte en vez de empujar la pantalla */
+        overflow-wrap: break-word;
+    }
+
+    .stat-item h3 {
+        font-size: 2rem; /* Te lo subo a 2rem porque 1.2rem para un número clave es demasiado pequeño en móvil */
+        margin-bottom: 5px;
+    }
+
+    .stat-item h4 {
+        font-size: 1.1rem; /* Ajustado para que encaje perfecto debajo del número */
+    }
+
+    /* Tarjeta de Contacto */
+    .contact-card {
+        padding: 30px 20px;
+        text-align: center;
+        width: 100%;
+        word-wrap: break-word; /* Evita que el correo largo rompa la pantalla */
+    }
+
+    .contact-card strong {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 5px;
+        color: var(--accent-color); /* Cambio sutil para diferenciar en móvil */
+    }
+
+    /* Responsive Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+    }
+
+    .footer-tagline {
+        margin: 15px auto 0;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .legal-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .contact-info-blocks {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+  /* Menú Hamburguesa */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    /* Comportamiento del menú desplegable */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Oculto por defecto fuera de la pantalla */
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(3, 3, 3, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: left 0.4s ease;
+    }
+
+    .nav-links.active {
+        left: 0; /* Aparece al hacer clic */
+    }
+
+    .nav-links a {
+        font-size: 1.5rem; /* Enlaces más grandes para tocar con el dedo */
+    }
+
+    /* Animación de las barras a una 'X' */
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Adaptación de contenidos generales (About, Logros, Contacto) */
+    .section { padding: 80px 0; }
+    .container { padding: 0 25px; }
+    .page-header { padding-top: 140px; padding-bottom: 40px; }
+    .page-header h1 { font-size: 2.2rem; }
+    
+    .hero h1 { font-size: 3rem; letter-spacing: 3px; }
+    .hero-content { padding-top: 60px; }
+
+    /* Grids a una columna */
+    .layout-grid { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+    }
+    
+    /* Centrar separadores al centrar el texto */
+    .layout-grid .line-separator-short { margin-left: auto; margin-right: auto; }
+
+    /* Orden lógico en móvil (texto e imagen) */
+    .layout-grid.invert .text-block, 
+    .layout-grid.invert .image-block { order: 0; }
+
+    /* Adaptación de estadísticas (Página Logros) */
+    .stats-grid, .bg-dark .stats-grid { grid-template-columns: 1fr; gap: 20px; }
+    .stat-item { padding: 30px 20px; }
+    .stat-item h3 { font-size: 2.8rem; }
+
+    /* Adaptación de Contacto */
+    .contact-card { padding: 30px 20px; text-align: center; width: 100%; word-wrap: break-word; }
+    .contact-card strong { display: block; margin-bottom: 5px; }
+    .pillars-bento-grid {
+    grid-template-columns: 1fr;
+}
+.bento-card {
+    min-height: 200px;
+    text-align: center; /* En móvil queda mejor centrado */
+}
+
+    .founder-wrapper {
+        /* Invertimos el orden: imagen arriba, texto abajo */
+        flex-direction: column-reverse; 
+        align-items: stretch;
+        background: transparent; /* Opcional: limpiar fondo en móvil para que respire más */
+        border: none; /* Opcional: quitar borde para ganar espacio lateral */
+    }
+
+    .founder-image {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .founder-image img {
+        /* Controlamos la altura para que no sea infinita */
+        height: 300px; 
+        object-fit: cover;
+        /* Aseguramos que se vea la cara (ajusta según la foto) */
+        object-position: center 20%; 
+        filter: grayscale(0%); /* En móvil mejor dejar color para impacto visual rápido */
+    }
+
+    .founder-content {
+        padding: 40px 20px; /* Reducimos el padding exagerado de PC */
+        width: 100%;
+        text-align: left;
+    }
+
+    .founder-content h2 {
+        font-size: 2.2rem; /* Título un poco más pequeño para que no rompa línea */
+    }
+
+    .highlight-quote {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        padding-left: 15px;
+    }
+
+    .founder-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+}

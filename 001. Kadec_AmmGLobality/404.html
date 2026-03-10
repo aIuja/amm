@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Ruta no encontrada - AMM Globality</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para que la 404 sea impactante */
+        .error-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--bg-color);
+            padding: 20px;
+        }
+
+        .error-code {
+            font-size: clamp(5rem, 15vw, 10rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.05); /* Efecto fantasma premium */
+            position: absolute;
+            z-index: 0;
+        }
+
+        .error-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-content h1 {
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .error-content p {
+            color: #888;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            font-size: 0.9rem;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-page">
+        <div class="error-code">404</div>
+        
+        <div class="error-content">
+            <img src="img/logo-header.png" alt="AMM Globality" style="height: 40px; margin-bottom: 40px;">
+            <h1>FUERA DE RUTA</h1>
+            <div class="line-separator-short" style="margin: 0 auto 20px;"></div>
+            <p>El talento no se pierde, pero esta página sí. Parece que la dirección que buscas no existe o ha sido movida.</p>
+            <a href="index.html" class="btn-back">Volver a la estrategia</a>
+        </div>
+    </div>
+
+</body>
+</html>
